@@ -1,1 +1,2 @@
-console.log('welcome on board!')
+import Main from './classes/Main';
+window.initList = options => new Main(options);
