@@ -7,18 +7,19 @@
 <body>
 
 
-<div class="hotel-booking-wrapper"></div>
+<div id="hotel-booking-wrapper"></div>
+
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         initList({
             sorting: {
-                stars: true,
-                price: true,
+                stars: false,
+                price: false,
             },
-            count: 5,
-            reviews: true,
-            pagination: 'lazy',
-            element: '.hotel-booking-wrapper'
+            count: 10,
+            reviews: false,
+            pagination: 'pagination',
+            element: 'hotel-booking-wrapper'
         });
     });
 </script>
