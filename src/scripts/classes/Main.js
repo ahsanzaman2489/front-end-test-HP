@@ -23,8 +23,9 @@ class Main extends Defaults {
 
   renderData(hotels) {
     console.log(hotels);
-    const {renderElement, itemToAdd} = this.getOptions();
+    const {renderElement} = this.getOptions();
     const $renderElement = document.getElementById(renderElement);
+
     this.previousIndex = this.previousIndex + hotels.length;
 
     for (let index = 0; index < hotels.length; index++) {
@@ -33,10 +34,10 @@ class Main extends Defaults {
       $renderElement.appendChild(div);
     }
 
-    // if (this.previousIndex + itemToAdd >= this.hotelsLength) {
-    //   let elem = document.getElementById('load-more');
-    //   elem.parentNode.removeChild(elem);
-    // }
+    if (this.previousIndex >= this.hotelsLength) {
+      let elem = document.getElementById('load-more');
+      elem.parentNode.removeChild(elem);
+    }
   }
 
   createLayout() {
@@ -68,16 +69,6 @@ class Main extends Defaults {
     }
     this.requestData();
   }
-
-
-  // renderData() {
-  //   const {count} = this.#options;
-  //   console.log(count)
-  //   for (let index = 0; index < count; index = index + 1) {
-  //     console.log('hellowolrd')
-  //   }
-  // }
-
 
 }
 

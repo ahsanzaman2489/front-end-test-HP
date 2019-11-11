@@ -1,2 +1,11 @@
-import Main from './classes/Main';
-window.initHotelList = options => new Main(options);
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+const App = () => {
+  return <h1>Hello world</h1>;
+};
+
+ReactDOM.render(
+  <App/>,
+  document.getElementById('root')
+);
