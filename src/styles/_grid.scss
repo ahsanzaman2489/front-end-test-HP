@@ -1,0 +1,39 @@
+.row-flex {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: left;
+  width: 100%;
+
+  + .row-flex {
+    margin-top: 5px;
+  }
+}
+
+.col-1 {
+  flex-basis: 100%;
+}
+
+.col-2 {
+  flex-basis: 50%;
+}
+
+.col-3 {
+  flex-basis: 33.3333333%;
+}
+
+.col-1-4, .col-4 {
+  flex-basis: 25%;
+}
+
+.col-3-4 {
+  flex-basis: 75%;
+}
+
+.col-4-5 {
+  flex-basis: 80%;
+}
+
+.col-1-5 {
+  flex-basis: 20%;
+}
