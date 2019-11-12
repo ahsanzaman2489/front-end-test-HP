@@ -1,9 +1,11 @@
-import React, {Fragment, useEffect, useState} from 'react';
+import React, {useEffect, useState, lazy, Suspense} from 'react';
 import Defaults from './defaults';
 import styles from './app.module.scss';
 import {makeRequest} from '../service/';
-import SelectBox from './select'
-import {HotelDataContext} from '../context'
+import SelectBox from './Select';
+import {HotelDataContext} from '../context';
+
+const HotelList = React.lazy(() => import('./HotelListComponent'));
 
 
 const App = () => {
@@ -19,14 +21,13 @@ const App = () => {
   useEffect(() => {
     if (hotels) {
       const newData = extractData(previousIndex, pagination ? count : hotels.length);
-      setData(newData);
+      setDataToRender(newData);
     }
   }, [hotels]);
 
-  const setData = (data) => {
+  const setDataToRender = (data) => {
     setHotelsToRender([...hotelsToRender, ...data]);
     setPreviousIndex(previousIndex + data.length);
-    console.log(previousIndex, data.length)
   };
   const extractData = (previousIndex, index) => {
     return hotels.slice(previousIndex, index);
@@ -35,7 +36,7 @@ const App = () => {
   const onLoadHandler = (e) => {
     e.preventDefault();
     const newData = extractData(previousIndex, itemToAdd + previousIndex);
-    setData(newData);
+    setDataToRender(newData);
   };
 
   const requestData = async (link = 'http://fake-hotel-api.herokuapp.com/api/hotels') => {
@@ -46,15 +47,24 @@ const App = () => {
     <HotelDataContext.Provider value={hotelsToRender}>
       <div className={styles.wrapper}>
         <div className={'row-flex'}>
-          <div className={'col-2'}>
-            <SelectBox/>
+          <div className={'col-1-5'}>
+            <div className={'row-flex'}>
+              <div className={'col-1'}>
+                {sorting.stars && <SelectBox/>}
+              </div>
+              <div className={'col-1'}>
+                {sorting.price && <SelectBox/>}
+              </div>
+            </div>
           </div>
-          <div className={'col-2 text-right'}>
-            <SelectBox/>
-          </div>
-          {hotelsToRender && <div>{hotelsToRender.map((hotel, index) => (<div key={index}>{hotel.city}</div>))}</div>}
-          {hotels && !(hotelsToRender.length >= hotels.length) &&
-          <a id="load-more" onClick={onLoadHandler}>load more</a>}
+          <Suspense fallback={<div>Loading...</div>}>
+            <div className={'col-4-5'}>
+              {hotelsToRender && <HotelList/>}
+              {hotels && !(hotelsToRender.length >= hotels.length) &&
+              <a id="load-more" onClick={onLoadHandler}>load more</a>}
+            </div>
+          </Suspense>
+
         </div>
       </div>
     </HotelDataContext.Provider>

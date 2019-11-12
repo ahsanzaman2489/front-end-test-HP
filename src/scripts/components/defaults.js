@@ -1,12 +1,12 @@
 export default {
   //Defaults
   sorting: {
-    stars: false,
+    stars: true,
     price: true,
   },
   count: 10,
   reviews: false,
   pagination: true,
-  itemToAdd: 50,
+  itemToAdd: 5,
 
 };
