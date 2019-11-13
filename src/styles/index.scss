@@ -1,18 +1,31 @@
-:global {
-  @import "./grid";
+@import "./grid";
 
-  $body-color: slateblue;
+$body-color: slateblue;
 
-  body {
-    color: $body-color;
-    font-family: sans-serif;
-  }
-
-  .text-left {
-    text-align: left;
-  }
-
-  .text-right {
-    text-align: right;
-  }
+* {
+  box-sizing: border-box;
 }
+
+html, body {
+  margin: 0;
+  padding: 0px;
+}
+
+body {
+  color: $body-color;
+  font-family: sans-serif;
+}
+
+p {
+  margin: 0;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+

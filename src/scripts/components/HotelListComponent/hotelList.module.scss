@@ -1,0 +1,22 @@
+.singleHotel-wrapper {
+  color: #000;
+  font-size: 14px;
+
+  .singleHotel {
+    margin-bottom: 30px;
+    border: 1px #cccccc solid;
+
+    .details {
+      padding: 15px;
+    }
+  }
+
+  .fit-ratio {
+    width: 100%;
+    position: relative;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-clip: content-box;
+  }
+}

@@ -4,9 +4,9 @@ export default {
     stars: true,
     price: true,
   },
-  count: 10,
+  count: 3,
   reviews: false,
   pagination: true,
-  itemToAdd: 5,
+  itemToAdd: 4,
 
 };
