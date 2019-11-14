@@ -12,8 +12,8 @@ const HotelList = () => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    useCSS: false,
     lazyLoad: true,
-
   };
   return (
     <HotelDataContext.Consumer>
@@ -44,9 +44,7 @@ const HotelList = () => {
                     <div className={'col-2'}>reviews</div>
                     <div className={'col-2'}><p className={'price'}>{hotel.price}</p>
                       <p className={'start-end-date'}>{hotel.date_start} - {hotel.date_end}</p></div>
-
                   </div>
-
                 </div>
               </div>
             </Fragment>

@@ -1,10 +1,11 @@
 import React from 'react';
 
-const Select = () => {
+const Select = ({options, ...props}) => {
+  const renderOptions = options => options.map(option => <option value={option} key={option}>{option}</option>);
   return (
     <div>
-      <select>
-        <option>stars</option>
+      <select {...props}>
+        {renderOptions(options)}
       </select>
     </div>
   )
